@@ -1,26 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package pkg223061008_project.techmentor;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author Apollo Gadget
- */
 public class RegisterController implements Initializable {
 
     @FXML
@@ -42,70 +41,93 @@ public class RegisterController implements Initializable {
     @FXML
     private Hyperlink loginLink;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        // Initialization logic if needed
+    }
 
     @FXML
     private void handleregister(ActionEvent event) {
         String name = nameField.getText();
-    String email = emailField.getText();
-    String password = passwordField.getText();
-    String confirmPassword = confirmpasswordField.getText();
-    String gender = null;
+        String email = emailField.getText();
+        String password = passwordField.getText();
+        String confirmPassword = confirmpasswordField.getText();
+        String gender = null;
 
-    if (maleradio.isSelected()) {
-        gender = "Male";
-    } else if (femaleradio.isSelected()) {
-        gender = "Female";
+        if (maleradio.isSelected()) {
+            gender = "Male";
+        } else if (femaleradio.isSelected()) {
+            gender = "Female";
+        }
+
+        // Basic validation
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || gender == null) {
+            showAlert("Registration Error", "Please fill in all fields and select gender.");
+            return;
+        }
+
+        if (!password.equals(confirmPassword)) {
+            showAlert("Password Mismatch", "Passwords do not match.");
+            return;
+        }
+
+        try {
+            Connection conn = Database.getConnection();
+
+            // 1. Check if email already exists
+            String checkQuery = "SELECT * FROM users WHERE email = ?";
+            PreparedStatement checkStmt = conn.prepareStatement(checkQuery);
+            checkStmt.setString(1, email);
+            ResultSet rs = checkStmt.executeQuery();
+
+            if (rs.next()) {
+                showAlert("Registration Error", "Email already registered.");
+                rs.close();
+                checkStmt.close();
+                conn.close();
+                return;
+            }
+
+           
+            String insertQuery = "INSERT INTO users (name, email, password, gender) VALUES (?, ?, ?, ?)";
+            PreparedStatement insertStmt = conn.prepareStatement(insertQuery);
+            insertStmt.setString(1, name);
+            insertStmt.setString(2, email);
+            insertStmt.setString(3, password);
+            insertStmt.setString(4, gender);
+
+            insertStmt.executeUpdate();
+            insertStmt.close();
+            conn.close();
+
+            showAlert("Success", "Registration successful!");
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle("TechMentor - Login");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Database Error", "Something went wrong.");
+        }
     }
 
-    // Basic validation
-    if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || gender == null) {
-        showAlert("Registration Error", "Please fill in all fields and select gender.");
-        return;
-    }
-
-    if (!password.equals(confirmPassword)) {
-        showAlert("Password Mismatch", "Passwords do not match.");
-        return;
-    }
-
-    // Simulate registration success
-    System.out.println("Registered User:");
-    System.out.println("Name: " + name);
-    System.out.println("Email: " + email);
-    System.out.println("Gender: " + gender);
-
-    showAlert("Success", "Registration successful!");
-
-    }
-
-    
-    
     private void showAlert(String title, String message) {
-    javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
-    alert.setTitle(title);
-    alert.setHeaderText(null);
-    alert.setContentText(message);
-    alert.showAndWait();
-}
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     @FXML
     private void goToLogin(ActionEvent event) {
         try {
-        javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("login.fxml"));
-        javafx.scene.Parent root = loader.load();
-        javafx.stage.Stage stage = (javafx.stage.Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
-        stage.setScene(new javafx.scene.Scene(root));
-        stage.setTitle("TechMentor - Login");
-    } catch (Exception e) {
-        e.printStackTrace();
+            Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("TechMentor - Login");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    }
-
 }
