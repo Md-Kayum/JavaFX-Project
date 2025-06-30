@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="600.0" stylesheets="@course_catalouge.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pkg223061008_project.techmentor.Course_catalougeController">
+   <children>
+      <ScrollPane layoutX="2.0" layoutY="3.0" prefHeight="481.0" prefWidth="600.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="3.0">
+         <content>
+            <VBox prefHeight="479.0" prefWidth="588.0" spacing="15.0">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="175.0" prefWidth="588.0" spacing="10.0" styleClass="course-card">
+                     <children>
+                        <ImageView fitHeight="122.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/networking.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="TOP_CENTER" prefHeight="139.0" prefWidth="422.0" spacing="10.0">
+                           <children>
+                              <Label styleClass="title-label" text="Courte Title : Networking">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="26.0" prefWidth="769.0" text="Understand the fundamental of networking and connectivity" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Duration : 4 weeks" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="EnrollButtonNet" mnemonicParsing="false" onAction="#handleEnrollNet" styleClass="enroll-btn" text="Enroll">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="20.0" prefHeight="175.0" prefWidth="588.0" spacing="10.0" styleClass="course-card">
+                     <children>
+                        <ImageView fitHeight="122.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Web%20bootcamp.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="TOP_CENTER" prefHeight="139.0" prefWidth="422.0" spacing="10.0">
+                           <children>
+                              <Label styleClass="title-label" text="Courte Title : HTML Basics">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="26.0" prefWidth="769.0" text="Learn to structure web pages with HTML, the core of website" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Duration : 4 weeks" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="EnrollButtonHTML" mnemonicParsing="false" onAction="#HandleHTMLEnroll" styleClass="enroll-btn" text="Enroll">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="211.0" prefHeight="175.0" prefWidth="588.0" spacing="10.0" styleClass="course-card">
+                     <children>
+                        <ImageView fitHeight="122.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/python%20lang.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="TOP_CENTER" prefHeight="139.0" prefWidth="422.0" spacing="10.0">
+                           <children>
+                              <Label styleClass="title-label" text="Courte Title : Python for Beginners">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="26.0" prefWidth="769.0" text="Master Python basics with simple syntax and examples." textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Duration : 4 weeks" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="EnrollButtonpyth" mnemonicParsing="false" onAction="#HandlePytEnroll" styleClass="enroll-btn" text="Enroll">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="351.0" prefHeight="175.0" prefWidth="588.0" spacing="10.0" styleClass="course-card">
+                     <children>
+                        <ImageView fitHeight="122.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/cybers.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="TOP_CENTER" prefHeight="139.0" prefWidth="422.0" spacing="10.0">
+                           <children>
+                              <Label styleClass="title-label" text="Courte Title : Cybersecurity Basics">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="26.0" prefWidth="769.0" text="Learn cybersecurity basics: threats and defenses." textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Duration : 4 weeks" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="EnrollButtonCyber" mnemonicParsing="false" onAction="#HandlecyberEnroll" styleClass="enroll-btn" text="Enroll">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
+      </ScrollPane>
+   </children>
+</AnchorPane>

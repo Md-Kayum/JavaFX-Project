@@ -1,0 +1,50 @@
+.root {
+    -fx-background-color: #0d1117;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+.label {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.text-field, .password-field {
+    -fx-pref-width: 300;
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+    -fx-background-color: #161b22;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #30363d;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.button {
+    -fx-background-color: linear-gradient(to right, #9b00f8, #00c3ff);
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #ff00d4, #00ddff);
+}
+.gender-radio {
+    -fx-text-fill: #00c3ff; 
+    -fx-font-size: 14px;
+}
+
+.hyperlink {
+    -fx-text-fill: #00c3ff;
+    -fx-font-size: 13px;
+    -fx-underline: false;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #ff00d4;
+    -fx-underline: true;
+}
