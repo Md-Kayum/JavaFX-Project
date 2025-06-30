@@ -19,11 +19,13 @@ import javafx.scene.control.Button;
 public class Course_catalougeController implements Initializable {
 
     @FXML
-    private Button enrollButton;
+    private Button EnrollButtonNet;
     @FXML
-    private Button enrollButton1;
+    private Button EnrollButtonHTML;
     @FXML
-    private Button enrollButton11;
+    private Button EnrollButtonCyber;
+    @FXML
+    private Button EnrollButtonpyth;
 
     /**
      * Initializes the controller class.
@@ -33,19 +35,16 @@ public class Course_catalougeController implements Initializable {
         // TODO
     }    
 
-    @FXML
     private void EnrollHTML(ActionEvent event) {
             showEnrollConfirmation("HTML Basics");
 
     }
 
-    @FXML
     private void EnrollPython(ActionEvent event) {
             showEnrollConfirmation("HTML Basics");
 
     }
 
-    @FXML
     private void EnrollNet(ActionEvent event) {
             showEnrollConfirmation("HTML Basics");
 
@@ -59,5 +58,21 @@ public class Course_catalougeController implements Initializable {
     alert.setContentText("You have successfully enrolled in: " + courseName);
     alert.showAndWait();
 }
+
+    @FXML
+    private void handleEnrollNet(ActionEvent event) {
+    }
+
+    @FXML
+    private void HandleHTMLEnroll(ActionEvent event) {
+    }
+
+    @FXML
+    private void HandlePytEnroll(ActionEvent event) {
+    }
+
+    @FXML
+    private void HandlecyberEnroll(ActionEvent event) {
+    }
 
 }
