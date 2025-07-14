@@ -14,6 +14,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import pkg223061008_project.techmentor.Session;
 
 public class LoginController implements Initializable {
 
@@ -48,6 +49,9 @@ public class LoginController implements Initializable {
                 java.sql.ResultSet rs = ps.executeQuery();
 
                 if (rs.next()) {
+                    // Save logged in user id to session
+                  Session.loggedInUserId = rs.getInt("id"); 
+
                     showAlert("Login successful!");
                     Parent root = FXMLLoader.load(getClass().getResource("Course_catalouge.fxml"));
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
