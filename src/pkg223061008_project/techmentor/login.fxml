@@ -25,6 +25,7 @@
             <Image url="@images/Tech%20Mentor%20Logo.png" />
          </image>
       </ImageView>
-      <Hyperlink fx:id="registerLink" layoutX="104.0" layoutY="355.0" onAction="#goToRegister" text="Don't have an account? Register here" />
+      <Hyperlink fx:id="registerLink" layoutX="104.0" layoutY="372.0" onAction="#goToRegister" text="Don't have an account? Register here" />
+      <Hyperlink fx:id="ForgotID" layoutX="151.0" layoutY="343.0" onAction="#handleforgotpassword" text="Forgot Password" />
    </children>
 </AnchorPane>
