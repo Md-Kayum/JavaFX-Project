@@ -14,7 +14,6 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import pkg223061008_project.techmentor.Session;
 
 public class LoginController implements Initializable {
 
@@ -26,6 +25,8 @@ public class LoginController implements Initializable {
     private PasswordField passwordfield;
     @FXML
     private Hyperlink registerLink;
+    @FXML
+    private Hyperlink ForgotID;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -49,8 +50,7 @@ public class LoginController implements Initializable {
                 java.sql.ResultSet rs = ps.executeQuery();
 
                 if (rs.next()) {
-                    // Save logged in user id to session
-                  Session.loggedInUserId = rs.getInt("id"); 
+                    Session.loggedInUserId = rs.getInt("id");
 
                     showAlert("Login successful!");
                     Parent root = FXMLLoader.load(getClass().getResource("Course_catalouge.fxml"));
@@ -87,6 +87,18 @@ public class LoginController implements Initializable {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("TechMentor - Register");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleforgotpassword(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("forgot_password.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("TechMentor - Forgot Password");
         } catch (Exception e) {
             e.printStackTrace();
         }
