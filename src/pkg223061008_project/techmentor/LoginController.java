@@ -33,44 +33,57 @@ public class LoginController implements Initializable {
         // Initialization code (if needed)
     }    
 
-    @FXML
-    private void handlelogin(ActionEvent event) {
-        String email = emailfield.getText();
-        String password = passwordfield.getText();
+  @FXML
+private void handlelogin(ActionEvent event) {
+    String email = emailfield.getText();
+    String password = passwordfield.getText();
 
-        if (email.isEmpty() || password.isEmpty()) {
-            showAlert("Please enter both email and password.");
-        } else {
-            try {
-                java.sql.Connection conn = Database.getConnection();
-                String query = "SELECT * FROM users WHERE email = ? AND password = ?";
-                java.sql.PreparedStatement ps = conn.prepareStatement(query);
-                ps.setString(1, email);
-                ps.setString(2, password);
-                java.sql.ResultSet rs = ps.executeQuery();
+    if (email.isEmpty() || password.isEmpty()) {
+        showAlert("Please enter both email and password.");
+    } else {
+        try {
+            java.sql.Connection conn = Database.getConnection();
+            String query = "SELECT * FROM users WHERE email = ? AND password = ?";
+            java.sql.PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            java.sql.ResultSet rs = ps.executeQuery();
 
-                if (rs.next()) {
-                    Session.loggedInUserId = rs.getInt("id");
+            if (rs.next()) {
+                Session.loggedInUserId = rs.getInt("id");
+                String role = rs.getString("role");  // Get the role from DB
 
-                    showAlert("Login successful!");
-                    Parent root = FXMLLoader.load(getClass().getResource("Course_catalouge.fxml"));
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(new Scene(root));
-                    stage.setTitle("TechMentor - Courses");
+                showAlert("Login successful!");
+
+                Parent root;
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                if ("admin".equalsIgnoreCase(role)) {
+                    
+                    root = FXMLLoader.load(getClass().getResource("admin_panel.fxml"));
+                    stage.setTitle("TechMentor - Admin Panel");
                 } else {
-                    showAlert("Invalid email or password.");
+                    
+                    root = FXMLLoader.load(getClass().getResource("Course_catalouge.fxml"));
+                    stage.setTitle("TechMentor - Courses");
                 }
 
-                rs.close();
-                ps.close();
-                conn.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                showAlert("Error connecting to database.");
+                stage.setScene(new Scene(root));
+            } else {
+                showAlert("Invalid email or password.");
             }
+
+            rs.close();
+            ps.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error connecting to database.");
         }
     }
+}
+
 
     private void showAlert(String message) {
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
