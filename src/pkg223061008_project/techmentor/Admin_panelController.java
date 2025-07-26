@@ -1,12 +1,16 @@
 package pkg223061008_project.techmentor;
 
 import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Admin_panelController {
@@ -16,14 +20,14 @@ public class Admin_panelController {
 
     @FXML
     private AnchorPane mainContent;
-
     @FXML
-    private void initialize() {
-        // Load dashboard view by default on admin panel startup
-        loadDashboard();
-    }
+    private ImageView logoImageView;
 
-    @FXML
+   @FXML
+void initialize() {
+    loadDashboard();
+}
+
     private void handleDashboardButton() {
         loadDashboard();
     }
@@ -57,7 +61,6 @@ private void handleManageUsersButton() {
     }
 }
 
-   @FXML
 private void handleManageCoursesButton() {
     try {
         Parent root = FXMLLoader.load(getClass().getResource("manage_course.fxml")); // Or "manage_courses.fxml" if that's your filename
@@ -81,21 +84,39 @@ private void handleManageCoursesButton() {
   @FXML
 private void handleLogoutButton() {
     try {
-        // Load login.fxml
+        
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        // Create a new stage (window) for the login screen
+        
         Stage loginStage = new Stage();
         loginStage.setScene(new Scene(root));
         loginStage.setTitle("Login");
         loginStage.show();
 
-        // Close the current admin panel window
+        
         Stage currentStage = (Stage) sidebar.getScene().getWindow();
         currentStage.close();
     } catch (IOException e) {
         e.printStackTrace();
     }
 }
+
+    @FXML
+private void handlemessage(ActionEvent event) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("admin_messages.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setTitle("Admin - Messages");
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+        
+    }
+}
+
 
 
 }
