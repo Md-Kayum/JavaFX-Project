@@ -18,29 +18,29 @@
         <!-- Course Thumbnail -->
         <ImageView fx:id="courseImage" fitHeight="120.0" fitWidth="180.0" layoutX="15.0" layoutY="25.0" />
 
-        <!-- Course Info Block -->
+        
         <VBox layoutX="210.0" layoutY="20.0" spacing="8.0">
             <children>
 
-                <!-- Title -->
+                
                 <Label fx:id="courseTitle" styleClass="title-label" text="Course Title" />
 
-                <!-- Description -->
+                
                 <Label fx:id="courseDesc" styleClass="label" text="Course Description goes here..." wrapText="true" />
 
-                <!-- Instructor -->
+               
                 <Label fx:id="courseInstructor" styleClass="label" text="Instructor: John Doe" />
 
-                <!-- Progress -->
+                
                 <HBox spacing="10.0">
                     <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.5" />
                     <Label fx:id="progressLabel" styleClass="label" text="Progress: 50%" />
                 </HBox>
 
-                <!-- Upcoming session -->
+                
                 <Label fx:id="nextSession" styleClass="label" text="Next Session: Aug 2, 10:00 AM" />
 
-                <!-- Buttons -->
+                
                 <HBox spacing="10.0">
                     <Button fx:id="continueBtn" onAction="#handleContinue" styleClass="enroll-btn" text="Continue Learning" />
                     <Button fx:id="dropBtn" onAction="#handleDrop" styleClass="nav-btn" text="Drop Course" />
