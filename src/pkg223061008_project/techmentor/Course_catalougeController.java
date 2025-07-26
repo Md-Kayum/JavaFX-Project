@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import pkg223061008_project.techmentor.Session;
 
@@ -26,6 +27,10 @@ public class Course_catalougeController implements Initializable {
     private Button EnrollButtonCyber;
     @FXML
     private Button EnrollButtonpyth;
+    @FXML
+    private Button myenroll;
+    @FXML
+    private Button contact1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -68,11 +73,11 @@ public class Course_catalougeController implements Initializable {
     }
 
     private void showEnrollConfirmation(String courseName) {
-   saveEnrollment(courseName);  // Save enrollment to DB
+   saveEnrollment(courseName);  
 
     System.out.println("Enrolled in: " + courseName);
 
-    // Disable the corresponding button
+   
     switch (courseName) {
         case "Networking Fundamentals":
             EnrollButtonNet.setDisable(true);
@@ -132,7 +137,7 @@ private boolean isAlreadyEnrolled(String courseName) {
 
     @FXML
     private void HandleLogout(ActionEvent event) {
-        // Reset session
+       
     Session.loggedInUserId = -1;
 
     try {
@@ -145,4 +150,41 @@ private boolean isAlreadyEnrolled(String courseName) {
     }
     }
 
+    @FXML
+private void handmyenroll(ActionEvent event) {
+    try {
+        Parent root = FXMLLoader.load(getClass().getResource("myenrollment.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle("TechMentor - Login");
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    }
+
+    @FXML
+    private void handlecontactus(ActionEvent event) {
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("contact.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setTitle("Contact Us");
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    } catch (Exception e) {
+        e.printStackTrace();
+        showAlert("Error", "Could not open Contact Us form.");
+    }
 }
+
+private void showAlert(String title, String message) {
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(message);
+    alert.showAndWait();
+    }
+}
+
