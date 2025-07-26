@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Label;
 
 public class DashboardController implements Initializable {
 
@@ -24,12 +25,15 @@ public class DashboardController implements Initializable {
 
     @FXML
     private javafx.scene.control.Label adminCountLabel;
+    @FXML
+    private Label messageCountLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadUserCount();
         loadCourseCount();
         loadAdminCount();
+         loadMessageCount();
         loadEnrollmentsPieChart();
     }
 
@@ -71,6 +75,19 @@ public class DashboardController implements Initializable {
             e.printStackTrace();
         }
     }
+private void loadMessageCount() {
+    try (Connection conn = Database.getConnection()) {
+        String sql = "SELECT COUNT(*) AS total FROM messages";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            messageCountLabel.setText(String.valueOf(rs.getInt("total")));
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        messageCountLabel.setText("N/A");
+    }
+}
 
     private void loadEnrollmentsPieChart() {
         try (Connection conn = Database.getConnection()) {
