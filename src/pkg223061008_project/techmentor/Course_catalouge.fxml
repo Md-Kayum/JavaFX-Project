@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" stylesheets="@course_catalouge.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pkg223061008_project.techmentor.Course_catalougeController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@course_catalouge.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pkg223061008_project.techmentor.Course_catalougeController">
+
     <children>
-        <HBox prefHeight="500.0" prefWidth="800.0">
+        <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
-            <!-- Sidebar -->
+           
             <VBox alignment="TOP_CENTER" prefWidth="180.0" spacing="20.0" styleClass="sidebar">
                 <padding>
                     <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
@@ -29,115 +29,87 @@
                 </ImageView>
                 <Label styleClass="logo-label" text="TechMentor" />
 
-                <!-- Navigation Buttons -->
+                
                 <Button styleClass="enroll-btn" text="Dashboard" />
-                <Button styleClass="enroll-btn" text="My Enrollments" />
+                <Button fx:id="myenroll" onAction="#handmyenroll" styleClass="enroll-btn" text="My Enrollments" />
+            <Button fx:id="contact1" onAction="#handlecontactus" styleClass="enroll-btn" text="Contact us" />
                 <Button onAction="#HandleLogout" styleClass="enroll-btn" text="Logout" />
             </VBox>
 
-            <!-- Main Content Area -->
-            <ScrollPane fitToWidth="true" prefHeight="500.0" prefWidth="620.0">
+            
+            <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS">
                 <content>
                     <VBox spacing="15.0">
                         <padding>
                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                         </padding>
 
-                        <!-- COURSE CARDS -->
+                        
                         <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="course-card">
-                            <children>
-                                <ImageView fitHeight="122.0" fitWidth="164.0" preserveRatio="true">
-                                    <image>
-                                        <Image url="@images/networking.jpg" />
-                                    </image>
-                                </ImageView>
-                                <VBox alignment="TOP_LEFT" spacing="10.0">
-                                    <Label styleClass="title-label" text="Course Title : Networking">
-                                        <font><Font name="System Bold" size="17.0" /></font>
-                                    </Label>
-                                    <Label text="Understand the fundamentals of networking and connectivity" wrapText="true">
-                                        <font><Font size="15.0" /></font>
-                                    </Label>
-                                    <Label text="Duration : 4 weeks" wrapText="true">
-                                        <font><Font size="17.0" /></font>
-                                    </Label>
-                                    <HBox alignment="CENTER_LEFT">
-                                        <Button fx:id="EnrollButtonNet" onAction="#handleEnrollNet" styleClass="enroll-btn" text="Enroll" />
-                                    </HBox>
-                                </VBox>
-                            </children>
+                            <ImageView fitHeight="122.0" fitWidth="164.0" preserveRatio="true">
+                                <image>
+                                    <Image url="@images/networking.jpg" />
+                                </image>
+                            </ImageView>
+                            <VBox alignment="TOP_LEFT" spacing="10.0">
+                                <Label styleClass="title-label" text="Course Title : Networking" />
+                                <Label text="Understand the fundamentals of networking and connectivity" wrapText="true" />
+                                <Label text="Duration : 4 weeks" wrapText="true" />
+                                <HBox alignment="CENTER_LEFT">
+                                    <Button fx:id="EnrollButtonNet" onAction="#handleEnrollNet" styleClass="enroll-btn" text="Enroll" />
+                                </HBox>
+                            </VBox>
                         </HBox>
 
+                       
                         <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="course-card">
-                            <children>
-                                <ImageView fitHeight="122.0" fitWidth="164.0" preserveRatio="true">
-                                    <image>
-                                        <Image url="@images/Web%20bootcamp.jpg" />
-                                    </image>
-                                </ImageView>
-                                <VBox alignment="TOP_LEFT" spacing="10.0">
-                                    <Label styleClass="title-label" text="Course Title : HTML Basics">
-                                        <font><Font name="System Bold" size="17.0" /></font>
-                                    </Label>
-                                    <Label text="Learn to structure web pages with HTML, the core of websites" wrapText="true">
-                                        <font><Font size="15.0" /></font>
-                                    </Label>
-                                    <Label text="Duration : 4 weeks" wrapText="true">
-                                        <font><Font size="17.0" /></font>
-                                    </Label>
-                                    <HBox alignment="CENTER_LEFT">
-                                        <Button fx:id="EnrollButtonHTML" onAction="#HandleHTMLEnroll" styleClass="enroll-btn" text="Enroll" />
-                                    </HBox>
-                                </VBox>
-                            </children>
+                            <ImageView fitHeight="122.0" fitWidth="164.0" preserveRatio="true">
+                                <image>
+                                    <Image url="@images/Web%20bootcamp.jpg" />
+                                </image>
+                            </ImageView>
+                            <VBox alignment="TOP_LEFT" spacing="10.0">
+                                <Label styleClass="title-label" text="Course Title : HTML Basics" />
+                                <Label text="Learn to structure web pages with HTML, the core of websites" wrapText="true" />
+                                <Label text="Duration : 4 weeks" wrapText="true" />
+                                <HBox alignment="CENTER_LEFT">
+                                    <Button fx:id="EnrollButtonHTML" onAction="#HandleHTMLEnroll" styleClass="enroll-btn" text="Enroll" />
+                                </HBox>
+                            </VBox>
                         </HBox>
 
+                       
                         <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="course-card">
-                            <children>
-                                <ImageView fitHeight="122.0" fitWidth="164.0" preserveRatio="true">
-                                    <image>
-                                        <Image url="@images/python%20lang.jpg" />
-                                    </image>
-                                </ImageView>
-                                <VBox alignment="TOP_LEFT" spacing="10.0">
-                                    <Label styleClass="title-label" text="Course Title : Python for Beginners">
-                                        <font><Font name="System Bold" size="17.0" /></font>
-                                    </Label>
-                                    <Label text="Master Python basics with simple syntax and examples." wrapText="true">
-                                        <font><Font size="15.0" /></font>
-                                    </Label>
-                                    <Label text="Duration : 4 weeks" wrapText="true">
-                                        <font><Font size="17.0" /></font>
-                                    </Label>
-                                    <HBox alignment="CENTER_LEFT">
-                                        <Button fx:id="EnrollButtonpyth" onAction="#HandlePytEnroll" styleClass="enroll-btn" text="Enroll" />
-                                    </HBox>
-                                </VBox>
-                            </children>
+                            <ImageView fitHeight="122.0" fitWidth="164.0" preserveRatio="true">
+                                <image>
+                                    <Image url="@images/python%20lang.jpg" />
+                                </image>
+                            </ImageView>
+                            <VBox alignment="TOP_LEFT" spacing="10.0">
+                                <Label styleClass="title-label" text="Course Title : Python for Beginners" />
+                                <Label text="Master Python basics with simple syntax and examples." wrapText="true" />
+                                <Label text="Duration : 4 weeks" wrapText="true" />
+                                <HBox alignment="CENTER_LEFT">
+                                    <Button fx:id="EnrollButtonpyth" onAction="#HandlePytEnroll" styleClass="enroll-btn" text="Enroll" />
+                                </HBox>
+                            </VBox>
                         </HBox>
 
+                       
                         <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="course-card">
-                            <children>
-                                <ImageView fitHeight="122.0" fitWidth="164.0" preserveRatio="true">
-                                    <image>
-                                        <Image url="@images/cybers.jpg" />
-                                    </image>
-                                </ImageView>
-                                <VBox alignment="TOP_LEFT" spacing="10.0">
-                                    <Label styleClass="title-label" text="Course Title : Cybersecurity Basics">
-                                        <font><Font name="System Bold" size="17.0" /></font>
-                                    </Label>
-                                    <Label text="Learn cybersecurity basics: threats and defenses." wrapText="true">
-                                        <font><Font size="15.0" /></font>
-                                    </Label>
-                                    <Label text="Duration : 4 weeks" wrapText="true">
-                                        <font><Font size="17.0" /></font>
-                                    </Label>
-                                    <HBox alignment="CENTER_LEFT">
-                                        <Button fx:id="EnrollButtonCyber" onAction="#HandlecyberEnroll" styleClass="enroll-btn" text="Enroll" />
-                                    </HBox>
-                                </VBox>
-                            </children>
+                            <ImageView fitHeight="122.0" fitWidth="164.0" preserveRatio="true">
+                                <image>
+                                    <Image url="@images/cybers.jpg" />
+                                </image>
+                            </ImageView>
+                            <VBox alignment="TOP_LEFT" spacing="10.0">
+                                <Label styleClass="title-label" text="Course Title : Cybersecurity Basics" />
+                                <Label text="Learn cybersecurity basics: threats and defenses." wrapText="true" />
+                                <Label text="Duration : 4 weeks" wrapText="true" />
+                                <HBox alignment="CENTER_LEFT">
+                                    <Button fx:id="EnrollButtonCyber" onAction="#HandlecyberEnroll" styleClass="enroll-btn" text="Enroll" />
+                                </HBox>
+                            </VBox>
                         </HBox>
 
                     </VBox>
